@@ -1,0 +1,86 @@
+[gd_scene load_steps=11 format=3 uid="uid://d1a68b55w8a1v"]
+
+[ext_resource type="Script" uid="uid://bk857l04q2v6j" path="res://scenes/enemies/character_body_2d.gd" id="1_cmohu"]
+[ext_resource type="Texture2D" uid="uid://n2ql751fcsnq" path="res://graphics/dog.png" id="1_lc6mq"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_nuob7"]
+vertices = PackedVector2Array(116.43, -89.0391, 106.531, 88.2734, -106.859, 94.7422, -127.969, -9.85938, -126.211, -89.9609)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-138, -9, -115, 105, 116, 98, 127, -99, -136, -100)])
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cmohu"]
+atlas = ExtResource("1_lc6mq")
+region = Rect2(0, 40, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nuob7"]
+atlas = ExtResource("1_lc6mq")
+region = Rect2(40, 40, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mm3wi"]
+atlas = ExtResource("1_lc6mq")
+region = Rect2(0, 0, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hl1xu"]
+atlas = ExtResource("1_lc6mq")
+region = Rect2(40, 0, 40, 40)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_txy1w"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cmohu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nuob7")
+}],
+"loop": true,
+"name": &"attacking",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mm3wi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hl1xu")
+}],
+"loop": true,
+"name": &"resting",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_mm3wi"]
+radius = 21.0238
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cmohu"]
+size = Vector2(209, 168)
+
+[node name="Dog" type="Node2D"]
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+navigation_polygon = SubResource("NavigationPolygon_nuob7")
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+collision_layer = 4
+collision_mask = 17
+script = ExtResource("1_cmohu")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D"]
+sprite_frames = SubResource("SpriteFrames_txy1w")
+animation = &"attacking"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+shape = SubResource("CircleShape2D_mm3wi")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="CharacterBody2D"]
+
+[node name="Area2D" type="Area2D" parent="."]
+visible = false
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(2.5, 3)
+shape = SubResource("RectangleShape2D_cmohu")
+
+[connection signal="body_entered" from="Area2D" to="CharacterBody2D" method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="CharacterBody2D" method="_on_area_2d_body_exited"]

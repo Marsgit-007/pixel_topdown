@@ -1,0 +1,105 @@
+[gd_scene load_steps=8 format=3 uid="uid://vgfdqgtitp55"]
+
+[ext_resource type="Script" uid="uid://cmtxu378s55mi" path="res://scenes/UI/ui.gd" id="1_f54a5"]
+[ext_resource type="Texture2D" uid="uid://cfl211wrs15qg" path="res://graphics/items/money.png" id="1_yb1mt"]
+[ext_resource type="Texture2D" uid="uid://bmrs7qn65awag" path="res://graphics/items/tuna.png" id="2_41gti"]
+[ext_resource type="LabelSettings" uid="uid://clrngdj5e4r3b" path="res://scenes/UI/consumable_font.tres" id="2_f54a5"]
+[ext_resource type="Texture2D" uid="uid://c2v1yp1o5mhth" path="res://graphics/progress bar/back.png" id="5_35jxk"]
+[ext_resource type="Texture2D" uid="uid://dr82y8qswwjxi" path="res://graphics/progress bar/frame.png" id="5_m41qk"]
+[ext_resource type="Texture2D" uid="uid://wvurasuct65s" path="res://graphics/progress bar/bar.png" id="6_35jxk"]
+
+[node name="UI" type="CanvasLayer"]
+script = ExtResource("1_f54a5")
+metadata/_edit_horizontal_guides_ = [1.0, 15.0]
+metadata/_edit_vertical_guides_ = [296.0, 315.0]
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchor_right = 1.0
+anchor_bottom = 0.09
+metadata/_edit_use_anchors_ = true
+
+[node name="Consumables" type="PanelContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.15
+anchor_bottom = 1.0
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Control/Consumables"]
+layout_mode = 2
+theme_override_constants/margin_left = 1
+theme_override_constants/margin_top = 1
+theme_override_constants/margin_right = 1
+theme_override_constants/margin_bottom = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/Consumables/MarginContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Control/Consumables/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(8, 8)
+layout_mode = 2
+texture = ExtResource("1_yb1mt")
+
+[node name="money" type="Label" parent="Control/Consumables/MarginContainer/HBoxContainer"]
+layout_mode = 2
+text = "0"
+label_settings = ExtResource("2_f54a5")
+
+[node name="TextureRect2" type="TextureRect" parent="Control/Consumables/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(8, 8)
+layout_mode = 2
+texture = ExtResource("2_41gti")
+
+[node name="tuna" type="Label" parent="Control/Consumables/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "0"
+label_settings = ExtResource("2_f54a5")
+
+[node name="Wildcard" type="PanelContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.85
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Control/Wildcard"]
+layout_mode = 2
+theme_override_constants/margin_left = 1
+theme_override_constants/margin_top = 1
+theme_override_constants/margin_right = 1
+theme_override_constants/margin_bottom = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/Wildcard/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 5
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="Control/Wildcard/MarginContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="RichTextLabel" parent="Control/Wildcard/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(25, 10)
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 11
+bbcode_enabled = true
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -58.0
+offset_top = -8.1
+offset_right = 58.0
+offset_bottom = 7.9
+grow_horizontal = 2
+grow_vertical = 2
+texture_under = ExtResource("5_35jxk")
+texture_over = ExtResource("5_m41qk")
+texture_progress = ExtResource("6_35jxk")

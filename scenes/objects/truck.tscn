@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://b7685gr48ilh1"]
+
+[ext_resource type="Script" uid="uid://rkkerew76irs" path="res://scenes/objects/truck.gd" id="1_hwanw"]
+[ext_resource type="Texture2D" uid="uid://cnxxehiml10r" path="res://graphics/truck.png" id="1_kb82c"]
+
+[sub_resource type="Curve2D" id="Curve2D_7teek"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 896, 0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 2
+
+[node name="truck" type="Path2D"]
+curve = SubResource("Curve2D_7teek")
+script = ExtResource("1_hwanw")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="."]
+position = Vector2(896, 0)
+rotation = 3.14159
+
+[node name="Truck" type="Sprite2D" parent="PathFollow2D"]
+rotation = 3.14159
+texture = ExtResource("1_kb82c")

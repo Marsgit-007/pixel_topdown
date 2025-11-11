@@ -1,0 +1,47 @@
+[gd_scene load_steps=2 format=3 uid="uid://brnv4vhc4nyfg"]
+
+[ext_resource type="Script" uid="uid://0ac5qqahqgo2" path="res://scenes/levels/canvas_layer.gd" id="1_5bcbc"]
+
+[node name="CanvasLayer" type="CanvasLayer"]
+script = ExtResource("1_5bcbc")
+metadata/_edit_horizontal_guides_ = [121.0, 180.0]
+metadata/_edit_vertical_guides_ = [49.0, 275.0, 50.0]
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.35906908, 0.35906908, 0.35906908, 1)
+
+[node name="Label" type="Label" parent="Control"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Well done, thanks for playing"
+
+[node name="Button" type="Button" parent="Control"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -4.0
+offset_top = -8.0
+offset_right = 4.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Quit game"
+
+[connection signal="pressed" from="Control/Button" to="." method="_on_button_pressed"]

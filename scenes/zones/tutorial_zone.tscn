@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://csah8ycbqnjl3"]
+
+[ext_resource type="Script" uid="uid://cdby1rrpj6sty" path="res://scenes/zones/tutorial_zone.gd" id="1_qwql4"]
+
+[node name="tutorial_zone" type="Area2D"]
+collision_layer = 2
+script = ExtResource("1_qwql4")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

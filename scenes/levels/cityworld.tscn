@@ -1,0 +1,73 @@
+[gd_scene load_steps=15 format=4 uid="uid://df1ikfu6plrrl"]
+
+[ext_resource type="PackedScene" uid="uid://b3vg07mo6d38p" path="res://scenes/player/player.tscn" id="1_it5ay"]
+[ext_resource type="Texture2D" uid="uid://c2vjuintm40hd" path="res://graphics/concrete_and_ice.png" id="1_pjwwf"]
+[ext_resource type="TileSet" uid="uid://c71aofab6i1pw" path="res://scenes/levels/grassworld.tres" id="2_nmx5r"]
+[ext_resource type="PackedScene" uid="uid://cw66pdl5x0dg5" path="res://scenes/items/item.tscn" id="3_g4461"]
+[ext_resource type="PackedScene" uid="uid://b7685gr48ilh1" path="res://scenes/objects/truck.tscn" id="3_nmx5r"]
+[ext_resource type="Resource" uid="uid://c3skf6c1ngu3q" path="res://resources/items/hat.tres" id="4_ptcx1"]
+[ext_resource type="PackedScene" uid="uid://dtwwrq2e10njy" path="res://scenes/UI/inventory_page.tscn" id="7_05rwc"]
+[ext_resource type="PackedScene" uid="uid://d1a68b55w8a1v" path="res://scenes/enemies/dog.tscn" id="8_yswqy"]
+[ext_resource type="PackedScene" uid="uid://dhr0lhn6owkp0" path="res://scenes/objects/tree.tscn" id="9_jhauc"]
+[ext_resource type="PackedScene" uid="uid://oy0qjnaw14yk" path="res://scenes/UI/pause.tscn" id="9_pjwwf"]
+[ext_resource type="PackedScene" uid="uid://c614dvo5yn5t1" path="res://scenes/zones/next_level.tscn" id="10_7iv3u"]
+[ext_resource type="AudioStream" uid="uid://dhci66ii2tt6p" path="res://audio/background/By The Roadside 01 - Cars, Trucks, Buses And Motorcycles-3.wav" id="12_g4461"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_utuh8"]
+texture = ExtResource("1_pjwwf")
+texture_region_size = Vector2i(64, 64)
+0:0/0 = 0
+1:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_n68gw"]
+tile_size = Vector2i(64, 64)
+sources/0 = SubResource("TileSetAtlasSource_utuh8")
+
+[node name="cityworld" type="Node2D"]
+metadata/_edit_vertical_guides_ = [-320.0, 576.0]
+metadata/_edit_horizontal_guides_ = [-64.0]
+
+[node name="tiles" type="Node2D" parent="."]
+
+[node name="concrete" type="TileMapLayer" parent="tiles"]
+tile_map_data = PackedByteArray("AAD//wAAAAAAAAAAAAD+/wAAAAAAAAAAAAD9/wAAAAAAAAAAAAD8/wAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAD8////AAAAAAAAAAD9////AAAAAAAAAAD+////AAAAAAAAAAD/////AAAAAAAAAAAAAP//AAAAAAAAAAABAP//AAAAAAAAAAACAP//AAAAAAAAAAACAAAAAAAAAAAAAAD7/wAAAAAAAAAAAAD7////AAAAAAAAAAADAP//AAAAAAAAAAADAAAAAAAAAAAAAAAEAP//AAAAAAAAAAAFAP//AAAAAAAAAAAGAP//AAAAAAAAAAAHAP//AAAAAAAAAAAIAP//AAAAAAAAAAAIAAAAAAAAAAAAAAAHAAAAAAAAAAAAAAAGAAAAAAAAAAAAAAAFAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAD7/wEAAAAAAAAAAAD8/wEAAAAAAAAAAAD9/wEAAAAAAAAAAAD+/wEAAAAAAAAAAAD//wEAAAAAAAAAAAAAAAEAAAAAAAAAAAABAAEAAAAAAAAAAAACAAEAAAAAAAAAAAADAAEAAAAAAAAAAAAEAAEAAAAAAAAAAAAFAAEAAAAAAAAAAAAGAAEAAAAAAAAAAAAHAAEAAAAAAAAAAAAIAAEAAAAAAAAAAAA=")
+tile_set = SubResource("TileSet_n68gw")
+
+[node name="paths" type="TileMapLayer" parent="tiles"]
+tile_map_data = PackedByteArray("AAABAAAAAAAAAAMAAAACAAAAAAAAAAMAAAADAAAAAAAAAAMAAAAAAAAAAAAAAAMAAAD//wAAAAAAAAMAAAD+/wAAAAAAAAMAAAD9/wAAAAAAAAMAAAD8/wAAAAAAAAMAAAD7/wAAAAAAAAMAAAAEAAAAAAACAAMAAAAEAP//AAABAAIAAAAFAP//AAAAAAMAAAAGAP//AAACAAIAAAAGAAAAAAABAAMAAAAHAAAAAAAAAAMAAAAIAAAAAAAAAAMAAAA=")
+tile_set = ExtResource("2_nmx5r")
+
+[node name="items" type="Node2D" parent="."]
+
+[node name="hat" parent="items" instance=ExtResource("3_g4461")]
+position = Vector2(337, -31)
+data = ExtResource("4_ptcx1")
+
+[node name="truck" parent="." instance=ExtResource("3_nmx5r")]
+position = Vector2(-320, -95)
+
+[node name="Player" parent="." instance=ExtResource("1_it5ay")]
+position = Vector2(-282, 7)
+starting_state = "right"
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+
+[node name="Dog" parent="." instance=ExtResource("8_yswqy")]
+position = Vector2(-66, 30)
+
+[node name="Tree" parent="." instance=ExtResource("9_jhauc")]
+position = Vector2(105, -86)
+
+[node name="NextLevel" parent="." instance=ExtResource("10_7iv3u")]
+position = Vector2(543, 28)
+next_level = "res://scenes/levels/snowworld.tscn"
+
+[node name="Pause" parent="." instance=ExtResource("9_pjwwf")]
+visible = false
+
+[node name="InventoryPage" parent="." instance=ExtResource("7_05rwc")]
+visible = false
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("12_g4461")
+autoplay = true

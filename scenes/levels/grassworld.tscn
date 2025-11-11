@@ -1,0 +1,262 @@
+[gd_scene load_steps=32 format=4 uid="uid://dkn2gae4gtfeq"]
+
+[ext_resource type="Texture2D" uid="uid://baosoubcbc8ot" path="res://graphics/grass.png" id="1_8w0jx"]
+[ext_resource type="PackedScene" uid="uid://b3vg07mo6d38p" path="res://scenes/player/player.tscn" id="1_pfeli"]
+[ext_resource type="Texture2D" uid="uid://b5a16x35kji81" path="res://graphics/flowers.png" id="2_1cvtk"]
+[ext_resource type="Texture2D" uid="uid://m0w2be0uyi26" path="res://graphics/rocks.png" id="3_b3k1g"]
+[ext_resource type="TileSet" uid="uid://c71aofab6i1pw" path="res://scenes/levels/grassworld.tres" id="4_drk5i"]
+[ext_resource type="PackedScene" uid="uid://dhr0lhn6owkp0" path="res://scenes/objects/tree.tscn" id="5_b3k1g"]
+[ext_resource type="Script" uid="uid://dc4mdw0en0ajr" path="res://scenes/levels/tutorials.gd" id="7_4ge6l"]
+[ext_resource type="PackedScene" uid="uid://csah8ycbqnjl3" path="res://scenes/zones/tutorial_zone.tscn" id="7_7nvvy"]
+[ext_resource type="Texture2D" uid="uid://bmosfe84ira3t" path="res://graphics/attack.png" id="8_rlb0h"]
+[ext_resource type="Texture2D" uid="uid://beacjmio44s66" path="res://graphics/up.png" id="10_773s7"]
+[ext_resource type="Resource" uid="uid://d28kfxedx1udd" path="res://resources/items/stick.tres" id="10_drk5i"]
+[ext_resource type="Texture2D" uid="uid://cxjjp087slhss" path="res://graphics/down.png" id="11_b2465"]
+[ext_resource type="Texture2D" uid="uid://d1goen1an5wcs" path="res://graphics/left.png" id="12_t2x8g"]
+[ext_resource type="Texture2D" uid="uid://bwk1ulpwxftte" path="res://graphics/right.png" id="13_d24xs"]
+[ext_resource type="PackedScene" uid="uid://cw66pdl5x0dg5" path="res://scenes/items/item.tscn" id="14_b2465"]
+[ext_resource type="Resource" uid="uid://07qm0dbpk6fv" path="res://resources/items/health.tres" id="15_t2x8g"]
+[ext_resource type="Resource" uid="uid://crscshu0wmp1e" path="res://resources/items/money.tres" id="16_d24xs"]
+[ext_resource type="Resource" uid="uid://cfvp4jqm217ms" path="res://resources/items/tuna.tres" id="17_rmi5s"]
+[ext_resource type="Resource" uid="uid://7lhf4tu4l2r0" path="res://resources/items/wood.tres" id="18_1bgl3"]
+[ext_resource type="PackedScene" uid="uid://c614dvo5yn5t1" path="res://scenes/zones/next_level.tscn" id="19_1bgl3"]
+[ext_resource type="PackedScene" uid="uid://oy0qjnaw14yk" path="res://scenes/UI/pause.tscn" id="20_hujxi"]
+[ext_resource type="PackedScene" uid="uid://dtwwrq2e10njy" path="res://scenes/UI/inventory_page.tscn" id="21_lyvqm"]
+[ext_resource type="AudioStream" uid="uid://u0j2g6tx51fk" path="res://audio/background/countryside.wav" id="23_wyri3"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1cvtk"]
+texture = ExtResource("1_8w0jx")
+texture_region_size = Vector2i(64, 64)
+0:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_2j2l7"]
+tile_size = Vector2i(64, 64)
+sources/0 = SubResource("TileSetAtlasSource_1cvtk")
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_2j2l7"]
+texture = ExtResource("2_1cvtk")
+texture_region_size = Vector2i(15, 15)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_b3k1g"]
+tile_size = Vector2i(15, 15)
+sources/0 = SubResource("TileSetAtlasSource_2j2l7")
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7nvvy"]
+texture = ExtResource("3_b3k1g")
+texture_region_size = Vector2i(22, 10)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+4:0/0 = 0
+5:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_rlb0h"]
+sources/0 = SubResource("TileSetAtlasSource_7nvvy")
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_rlb0h"]
+radius = 86.0058
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_iedu2"]
+radius = 33.0
+
+[node name="Grassworld" type="Node2D"]
+
+[node name="tiles" type="Node2D" parent="."]
+
+[node name="Grass" type="TileMapLayer" parent="tiles"]
+tile_map_data = PackedByteArray("AAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAACAAAAAAAAAAAAAAADAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAEAAEAAAAAAAAAAAADAAEAAAAAAAAAAAACAAEAAAAAAAAAAAABAAEAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAIAAAAAAAAAAAABAAMAAAAAAAAAAAAAAAMAAAAAAAAAAAACAAMAAAAAAAAAAAADAAMAAAAAAAAAAAAEAAMAAAAAAAAAAAAFAAMAAAAAAAAAAAAFAAIAAAAAAAAAAAAFAAEAAAAAAAAAAAAFAAAAAAAAAAAAAAAFAP//AAAAAAAAAAAEAP//AAAAAAAAAAADAP//AAAAAAAAAAACAP//AAAAAAAAAAABAP//AAAAAAAAAAAAAP//AAAAAAAAAAD/////AAAAAAAAAAD//wAAAAAAAAAAAAD//wEAAAAAAAAAAAD//wIAAAAAAAAAAAD//wMAAAAAAAAAAAD//wQAAAAAAAAAAAAAAAQAAAAAAAAAAAABAAQAAAAAAAAAAAACAAQAAAAAAAAAAAADAAQAAAAAAAAAAAAEAAQAAAAAAAAAAAAFAAQAAAAAAAAAAAAGAAQAAAAAAAAAAAAGAAMAAAAAAAAAAAAGAAIAAAAAAAAAAAAGAAEAAAAAAAAAAAAGAAAAAAAAAAAAAAAGAP//AAAAAAAAAAAGAP7/AAAAAAAAAAAFAP7/AAAAAAAAAAAEAP7/AAAAAAAAAAADAP7/AAAAAAAAAAACAP7/AAAAAAAAAAABAP7/AAAAAAAAAAAAAP7/AAAAAAAAAAD///7/AAAAAAAAAAD+//7/AAAAAAAAAAD+////AAAAAAAAAAD+/wAAAAAAAAAAAAD+/wEAAAAAAAAAAAD+/wIAAAAAAAAAAAD+/wMAAAAAAAAAAAD+/wQAAAAAAAAAAAADAAIAAAAAAAAAAAAEAAIAAAAAAAAAAAACAAIAAAAAAAAAAAABAAIAAAAAAAAAAAD+/wUAAAAAAAAAAAD//wUAAAAAAAAAAAAAAAUAAAAAAAAAAAABAAUAAAAAAAAAAAACAAUAAAAAAAAAAAADAAUAAAAAAAAAAAAEAAUAAAAAAAAAAAAFAAUAAAAAAAAAAAAGAAUAAAAAAAAAAAAGAAYAAAAAAAAAAAAFAAYAAAAAAAAAAAAEAAYAAAAAAAAAAAADAAYAAAAAAAAAAAACAAYAAAAAAAAAAAABAAYAAAAAAAAAAAAAAAYAAAAAAAAAAAD//wYAAAAAAAAAAAD+/wYAAAAAAAAAAAA=")
+tile_set = SubResource("TileSet_2j2l7")
+
+[node name="Flowers" type="TileMapLayer" parent="tiles"]
+tile_map_data = PackedByteArray("AAD5//z/AAAAAAAAAAD3//7/AAAAAAAAAAD+//z/AAAAAAAAAAD8//7/AAAAAAAAAAD4/wkAAAAAAAAAAAAMAPr/AAAAAAAAAAAFAAIAAAAAAAAAAAD9/wsAAAAAAAAAAAAPAAQAAAAAAAAAAAAAABIAAAAAAAAAAAD+/xQAAAAAAAAAAAASAAkAAAAAAAAAAAAQAAsAAAAAAAAAAAALABAAAAACAAAAAAAcAPn/AAAAAAAAAAAcAPv/AAAAAAAAAAAbAP//AAAAAAAAAAAWABQAAAAAAAAAAAAaAAgAAAAAAAAAAAAbAAwAAAABAAAAAAAaAAkAAAABAAAAAAATAA4AAAABAAAAAAARAA8AAAABAAAAAAAQABAAAAABAAAAAAAYAAEAAAABAAAAAAAXAAIAAAABAAAAAAAKAA0AAAABAAAAAAAJAA4AAAABAAAAAAADABMAAAABAAAAAAAHAAYAAAABAAAAAAD+/w4AAAABAAAAAAD4/xMAAAABAAAAAAAMAPz/AAABAAAAAAAGAAAAAAABAAAAAAD7/wkAAAABAAAAAAD9/wEAAAABAAAAAAD9//3/AAABAAAAAAD5/wAAAAABAAAAAAD4/wAAAAABAAAAAAD+//j/AAABAAAAAAAZAP7/AAADAAAAAAASAPr/AAACAAAAAAAUAPz/AAACAAAAAAAZAAMAAAACAAAAAAAbAAkAAAACAAAAAAAZAAcAAAACAAAAAAASAAIAAAACAAAAAAAUAAYAAAACAAAAAAAHAPj/AAACAAAAAAASAA4AAAACAAAAAAAEAA8AAAACAAAAAAD4//v/AAACAAAAAAD//w8AAAACAAAAAAD6/woAAAACAAAAAAD7/wwAAAACAAAAAAD9/xIAAAACAAAAAAD6/xMAAAACAAAAAAD7//n/AAADAAAAAAD8//n/AAADAAAAAAAEAPr/AAADAAAAAAAHAP7/AAADAAAAAAAVAAMAAAADAAAAAAD//wYAAAADAAAAAAAQAAcAAAADAAAAAAACAA4AAAADAAAAAAAGAA4AAAADAAAAAAAHAA4AAAADAAAAAAANABIAAAADAAAAAAA=")
+tile_set = SubResource("TileSet_b3k1g")
+
+[node name="Rocks" type="TileMapLayer" parent="tiles"]
+tile_map_data = PackedByteArray("AAAGAPv/AAAAAAAAAAAKAPv/AAAAAAAAAAASAPv/AAAAAAAAAAAEAAYAAAAAAAAAAAAIAA8AAAAAAAAAAAAOABEAAAAAAAAAAAAUABIAAAAAAAAAAAAWABAAAAAAAAAAAAACAAsAAAAEAAAAAAD6/w4AAAAEAAAAAAD8/wYAAAAEAAAAAAD6/wMAAAAEAAAAAAAAAPz/AAAEAAAAAAAEAPz/AAAEAAAAAAAHAPz/AAAEAAAAAAAMAAIAAAACAAAAAAAVAAAAAAACAAAAAAAbAAEAAAACAAAAAAAJABAAAAADAAAAAAAGAAgAAAADAAAAAAD7//j/AAADAAAAAAD8//j/AAADAAAAAAA=")
+tile_set = SubResource("TileSet_rlb0h")
+
+[node name="Paths" type="TileMapLayer" parent="tiles"]
+tile_map_data = PackedByteArray("AAAGAAEAAAAAAAAAAAA=")
+tile_set = ExtResource("4_drk5i")
+
+[node name="items" type="Node2D" parent="."]
+
+[node name="health" parent="items" instance=ExtResource("14_b2465")]
+position = Vector2(235, 103)
+data = ExtResource("15_t2x8g")
+
+[node name="health2" parent="items" instance=ExtResource("14_b2465")]
+position = Vector2(264, 105)
+data = ExtResource("15_t2x8g")
+
+[node name="health3" parent="items" instance=ExtResource("14_b2465")]
+position = Vector2(298, 112)
+data = ExtResource("15_t2x8g")
+
+[node name="health4" parent="items" instance=ExtResource("14_b2465")]
+position = Vector2(298, 112)
+data = ExtResource("15_t2x8g")
+
+[node name="health5" parent="items" instance=ExtResource("14_b2465")]
+position = Vector2(330, 126)
+data = ExtResource("15_t2x8g")
+
+[node name="money" parent="items" instance=ExtResource("14_b2465")]
+position = Vector2(11, 179)
+data = ExtResource("16_d24xs")
+
+[node name="money2" parent="items" instance=ExtResource("14_b2465")]
+position = Vector2(-2, 251)
+data = ExtResource("16_d24xs")
+
+[node name="money5" parent="items" instance=ExtResource("14_b2465")]
+position = Vector2(6, 323)
+data = ExtResource("16_d24xs")
+
+[node name="money8" parent="items" instance=ExtResource("14_b2465")]
+position = Vector2(396, 316)
+data = ExtResource("16_d24xs")
+
+[node name="money11" parent="items" instance=ExtResource("14_b2465")]
+position = Vector2(403, 226)
+data = ExtResource("16_d24xs")
+
+[node name="money9" parent="items" instance=ExtResource("14_b2465")]
+position = Vector2(320, 351)
+data = ExtResource("16_d24xs")
+
+[node name="money10" parent="items" instance=ExtResource("14_b2465")]
+position = Vector2(244, 352)
+data = ExtResource("16_d24xs")
+
+[node name="money6" parent="items" instance=ExtResource("14_b2465")]
+position = Vector2(61, 274)
+data = ExtResource("16_d24xs")
+
+[node name="money7" parent="items" instance=ExtResource("14_b2465")]
+position = Vector2(125, 269)
+data = ExtResource("16_d24xs")
+
+[node name="money3" parent="items" instance=ExtResource("14_b2465")]
+position = Vector2(74, 249)
+data = ExtResource("16_d24xs")
+
+[node name="money4" parent="items" instance=ExtResource("14_b2465")]
+position = Vector2(-51, 64)
+data = ExtResource("16_d24xs")
+
+[node name="tuna" parent="items" instance=ExtResource("14_b2465")]
+position = Vector2(-28, 185)
+data = ExtResource("17_rmi5s")
+
+[node name="tuna2" parent="items" instance=ExtResource("14_b2465")]
+position = Vector2(160, 81)
+data = ExtResource("17_rmi5s")
+
+[node name="tuna3" parent="items" instance=ExtResource("14_b2465")]
+position = Vector2(263, 63)
+data = ExtResource("17_rmi5s")
+
+[node name="tuna4" parent="items" instance=ExtResource("14_b2465")]
+position = Vector2(325, 90)
+data = ExtResource("17_rmi5s")
+
+[node name="tuna5" parent="items" instance=ExtResource("14_b2465")]
+position = Vector2(354, 48)
+data = ExtResource("17_rmi5s")
+
+[node name="tuna6" parent="items" instance=ExtResource("14_b2465")]
+position = Vector2(182, 49)
+data = ExtResource("17_rmi5s")
+
+[node name="tuna7" parent="items" instance=ExtResource("14_b2465")]
+position = Vector2(221, 32)
+data = ExtResource("17_rmi5s")
+
+[node name="Item2" parent="items" instance=ExtResource("14_b2465")]
+position = Vector2(152, 167)
+data = ExtResource("18_1bgl3")
+
+[node name="Item" parent="items" instance=ExtResource("14_b2465")]
+position = Vector2(210, 242)
+data = ExtResource("10_drk5i")
+
+[node name="Player" parent="." instance=ExtResource("1_pfeli")]
+position = Vector2(90, 111)
+starting_state = "awakening"
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+position = Vector2(8, 11)
+
+[node name="Tree" parent="." instance=ExtResource("5_b3k1g")]
+position = Vector2(258, 218)
+scale = Vector2(1.5, 1.5)
+
+[node name="Tutorials" type="Node2D" parent="."]
+script = ExtResource("7_4ge6l")
+
+[node name="attack" parent="Tutorials" instance=ExtResource("7_7nvvy")]
+
+[node name="Attack" type="Sprite2D" parent="Tutorials/attack"]
+position = Vector2(195, 207)
+texture = ExtResource("8_rlb0h")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tutorials/attack"]
+position = Vector2(259, 229)
+shape = SubResource("CircleShape2D_rlb0h")
+
+[node name="up" parent="Tutorials" instance=ExtResource("7_7nvvy")]
+on_load = true
+
+[node name="Up" type="Sprite2D" parent="Tutorials/up"]
+position = Vector2(91, 62)
+texture = ExtResource("10_773s7")
+
+[node name="down" parent="Tutorials" instance=ExtResource("7_7nvvy")]
+on_load = true
+
+[node name="Down" type="Sprite2D" parent="Tutorials/down"]
+position = Vector2(88, 182)
+texture = ExtResource("11_b2465")
+
+[node name="left" parent="Tutorials" instance=ExtResource("7_7nvvy")]
+on_load = true
+
+[node name="Left" type="Sprite2D" parent="Tutorials/left"]
+position = Vector2(13, 123)
+texture = ExtResource("12_t2x8g")
+
+[node name="right" parent="Tutorials" instance=ExtResource("7_7nvvy")]
+on_load = true
+
+[node name="Right" type="Sprite2D" parent="Tutorials/right"]
+position = Vector2(162, 125)
+texture = ExtResource("13_d24xs")
+
+[node name="tutorial_fade" type="Area2D" parent="."]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="tutorial_fade"]
+position = Vector2(90, 124)
+shape = SubResource("CircleShape2D_iedu2")
+
+[node name="NextLevel" parent="." instance=ExtResource("19_1bgl3")]
+position = Vector2(416, 101)
+next_level = "res://scenes/levels/cityworld.tscn"
+
+[node name="Pause" parent="." instance=ExtResource("20_hujxi")]
+visible = false
+
+[node name="InventoryPage" parent="." instance=ExtResource("21_lyvqm")]
+visible = false
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("23_wyri3")
+autoplay = true
+
+[connection signal="body_exited" from="tutorial_fade" to="Tutorials" method="_on_tutorial_fade_body_exited"]

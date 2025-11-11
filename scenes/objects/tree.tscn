@@ -1,0 +1,111 @@
+[gd_scene load_steps=14 format=3 uid="uid://dhr0lhn6owkp0"]
+
+[ext_resource type="Script" uid="uid://cj7ejto04bo4w" path="res://scenes/objects/tree.gd" id="1_5qchx"]
+[ext_resource type="Texture2D" uid="uid://bq3henq6rqsls" path="res://graphics/tree.png" id="1_r6wkp"]
+[ext_resource type="Script" uid="uid://13ube4alibe" path="res://scenes/objects/leaves.gd" id="3_03oh1"]
+[ext_resource type="Texture2D" uid="uid://cepa50eiw22vo" path="res://graphics/green_leaf.png" id="4_0v8c2"]
+[ext_resource type="Texture2D" uid="uid://tnmg0elbqacv" path="res://graphics/orange_leaf.png" id="5_edpnc"]
+[ext_resource type="Texture2D" uid="uid://bvy4hlw4ynblb" path="res://graphics/red_leaf.png" id="6_1pa56"]
+[ext_resource type="Texture2D" uid="uid://bj7hr8bp1h8m0" path="res://graphics/yellow_leaf.png" id="7_yadfy"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r6wkp"]
+atlas = ExtResource("1_r6wkp")
+region = Rect2(0, 0, 80, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5qchx"]
+atlas = ExtResource("1_r6wkp")
+region = Rect2(80, 0, 80, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eogu4"]
+atlas = ExtResource("1_r6wkp")
+region = Rect2(160, 0, 80, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7yu6v"]
+atlas = ExtResource("1_r6wkp")
+region = Rect2(240, 0, 80, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mbbxw"]
+atlas = ExtResource("1_r6wkp")
+region = Rect2(320, 0, 80, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_03oh1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r6wkp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5qchx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eogu4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7yu6v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mbbxw")
+}],
+"loop": false,
+"name": &"new_animation",
+"speed": 5.0
+}]
+
+[node name="Tree" type="StaticBody2D"]
+collision_layer = 8
+script = ExtResource("1_5qchx")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_03oh1")
+animation = &"new_animation"
+frame = 4
+frame_progress = 1.0
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+position = Vector2(1, -12)
+polygon = PackedVector2Array(16, 15, 18, 22, 19, 27, 22, 37, 25, 42, 27, 43, 26, 46, 16, 48, -12, 48, -20, 44, -17, 39, -14, 31, -12, 20, -12, 15, 1, 15)
+
+[node name="player_detection" type="Area2D" parent="."]
+position = Vector2(-39, -76)
+collision_layer = 10
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="player_detection"]
+position = Vector2(41, 64)
+polygon = PackedVector2Array(-25, 43, -18, 49, 25, 49, 32, 43, 34, 39, 49, 38, 49, 73, -39, 73, -39, 41, -26, 41)
+
+[node name="leaves" type="Node2D" parent="."]
+visible = false
+position = Vector2(-10, -13)
+scale = Vector2(0.8, 0.8)
+script = ExtResource("3_03oh1")
+
+[node name="GreenLeaf" type="Sprite2D" parent="leaves"]
+position = Vector2(15, -16.25)
+texture = ExtResource("4_0v8c2")
+offset = Vector2(10, 10)
+
+[node name="OrangeLeaf" type="Sprite2D" parent="leaves"]
+position = Vector2(28.75, -20)
+texture = ExtResource("5_edpnc")
+offset = Vector2(20, 20)
+
+[node name="RedLeaf" type="Sprite2D" parent="leaves"]
+position = Vector2(-6.25, -12.5)
+texture = ExtResource("6_1pa56")
+offset = Vector2(5, 5)
+
+[node name="YellowLeaf" type="Sprite2D" parent="leaves"]
+position = Vector2(-26.25, -6.25)
+texture = ExtResource("7_yadfy")
+offset = Vector2(8, 8)
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
+[node name="wood" type="Node2D" parent="."]
+position = Vector2(-39, -76)
+
+[connection signal="body_entered" from="player_detection" to="." method="_on_player_detection_body_entered"]
+[connection signal="body_exited" from="player_detection" to="." method="_on_player_detection_body_exited"]
+[connection signal="timeout" from="Timer" to="leaves" method="_on_timer_timeout"]

@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="ItemInfo" load_steps=3 format=3 uid="uid://cfvp4jqm217ms"]
+
+[ext_resource type="Texture2D" uid="uid://bmrs7qn65awag" path="res://graphics/items/tuna.png" id="1_vhwvi"]
+[ext_resource type="Script" uid="uid://dlcitkg7k2xml" path="res://scripts/res/item_info.gd" id="2_0axde"]
+
+[resource]
+script = ExtResource("2_0axde")
+icon = ExtResource("1_vhwvi")
+name = "tuna"
+type = 0
+rarity = 10
+amount = 1
+metadata/_custom_type_script = "uid://dlcitkg7k2xml"

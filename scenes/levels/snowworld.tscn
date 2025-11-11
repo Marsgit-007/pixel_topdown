@@ -1,0 +1,57 @@
+[gd_scene load_steps=11 format=4 uid="uid://ct3hbrwr6ihig"]
+
+[ext_resource type="TileSet" uid="uid://c71aofab6i1pw" path="res://scenes/levels/grassworld.tres" id="1_yw40i"]
+[ext_resource type="Texture2D" uid="uid://c2vjuintm40hd" path="res://graphics/concrete_and_ice.png" id="2_kx2gf"]
+[ext_resource type="PackedScene" uid="uid://b3vg07mo6d38p" path="res://scenes/player/player.tscn" id="3_r3wiq"]
+[ext_resource type="PackedScene" uid="uid://oy0qjnaw14yk" path="res://scenes/UI/pause.tscn" id="4_0u3k6"]
+[ext_resource type="PackedScene" uid="uid://dtwwrq2e10njy" path="res://scenes/UI/inventory_page.tscn" id="5_ktnnq"]
+[ext_resource type="Texture2D" uid="uid://d8r60osdaw8x" path="res://graphics/igloo.png" id="6_kx2gf"]
+[ext_resource type="PackedScene" uid="uid://deetra8mn8ic0" path="res://scenes/enemies/seal.tscn" id="7_r3wiq"]
+[ext_resource type="PackedScene" uid="uid://c614dvo5yn5t1" path="res://scenes/zones/next_level.tscn" id="8_0u3k6"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ychr1"]
+texture = ExtResource("2_kx2gf")
+texture_region_size = Vector2i(64, 64)
+0:0/0 = 0
+1:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_p0th1"]
+tile_size = Vector2i(64, 64)
+sources/0 = SubResource("TileSetAtlasSource_ychr1")
+
+[node name="snowworld" type="Node2D"]
+
+[node name="tiles" type="Node2D" parent="."]
+
+[node name="paths" type="TileMapLayer" parent="tiles"]
+tile_set = ExtResource("1_yw40i")
+
+[node name="snow" type="TileMapLayer" parent="tiles"]
+tile_map_data = PackedByteArray("AAD8//3/AAABAAAAAAD9//3/AAABAAAAAAD+//3/AAABAAAAAAD///3/AAABAAAAAAAAAP3/AAABAAAAAAABAP3/AAABAAAAAAABAPz/AAABAAAAAAAAAPz/AAABAAAAAAD///z/AAABAAAAAAD+//z/AAABAAAAAAD9//z/AAABAAAAAAD8//z/AAABAAAAAAD8//7/AAABAAAAAAD9//7/AAABAAAAAAD+//7/AAABAAAAAAD///7/AAABAAAAAAAAAP7/AAABAAAAAAAAAP//AAABAAAAAAD/////AAABAAAAAAD+////AAABAAAAAAD9////AAABAAAAAAD8////AAABAAAAAAABAP//AAABAAAAAAABAP7/AAABAAAAAAABAAAAAAABAAAAAAAAAAAAAAABAAAAAAD//wAAAAABAAAAAAD+/wAAAAABAAAAAAD9/wEAAAABAAAAAAD8/wEAAAABAAAAAAD8/wAAAAABAAAAAAD9/wAAAAABAAAAAAD+/wEAAAABAAAAAAD//wEAAAABAAAAAAAAAAEAAAABAAAAAAABAAEAAAABAAAAAAABAAIAAAABAAAAAAAAAAIAAAABAAAAAAD//wIAAAABAAAAAAD+/wIAAAABAAAAAAD9/wIAAAABAAAAAAD8/wIAAAABAAAAAAACAPz/AAABAAAAAAACAP3/AAABAAAAAAACAP7/AAABAAAAAAACAP//AAABAAAAAAACAAAAAAABAAAAAAACAAEAAAABAAAAAAADAAEAAAABAAAAAAADAAAAAAABAAAAAAADAP//AAABAAAAAAADAP7/AAABAAAAAAADAP3/AAABAAAAAAADAPz/AAABAAAAAAACAAIAAAABAAAAAAADAAIAAAABAAAAAAAEAAIAAAABAAAAAAAEAAEAAAABAAAAAAAEAAAAAAABAAAAAAAEAP//AAABAAAAAAAEAP7/AAABAAAAAAAEAP3/AAABAAAAAAAEAPz/AAABAAAAAAA=")
+tile_set = SubResource("TileSet_p0th1")
+
+[node name="items" type="Node2D" parent="."]
+
+[node name="Player" parent="." instance=ExtResource("3_r3wiq")]
+position = Vector2(-215, -11)
+starting_state = "right"
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+
+[node name="Igloo" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(408, -1)
+texture = ExtResource("6_kx2gf")
+
+[node name="seal" parent="." instance=ExtResource("7_r3wiq")]
+position = Vector2(156, 2)
+
+[node name="NextLevel" parent="." instance=ExtResource("8_0u3k6")]
+position = Vector2(410, 11)
+next_level = "res://scenes/levels/end.tscn"
+
+[node name="Pause" parent="." instance=ExtResource("4_0u3k6")]
+visible = false
+
+[node name="InventoryPage" parent="." instance=ExtResource("5_ktnnq")]
+visible = false

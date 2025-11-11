@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=3 uid="uid://dri4osx7emsg8"]
+
+[ext_resource type="Script" uid="uid://puykldkcad0f" path="res://scenes/UI/item_for_grid.gd" id="1_mv0s8"]
+[ext_resource type="LabelSettings" uid="uid://clrngdj5e4r3b" path="res://scenes/UI/consumable_font.tres" id="2_g803r"]
+
+[node name="TextureRect" type="TextureButton" groups=["clickable_icons"]]
+custom_minimum_size = Vector2(32, 32)
+offset_right = 32.0
+offset_bottom = 32.0
+script = ExtResource("1_mv0s8")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 21.0
+offset_right = 2.0
+offset_bottom = -19.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "12"
+label_settings = ExtResource("2_g803r")
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]
+[connection signal="pressed" from="." to="." method="_on_pressed"]

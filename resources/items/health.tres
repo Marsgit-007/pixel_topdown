@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="ItemInfo" load_steps=3 format=3 uid="uid://07qm0dbpk6fv"]
+
+[ext_resource type="Texture2D" uid="uid://dcw37qjlpus6w" path="res://graphics/items/heart.png" id="1_cig61"]
+[ext_resource type="Script" uid="uid://dlcitkg7k2xml" path="res://scripts/res/item_info.gd" id="2_cig61"]
+
+[resource]
+script = ExtResource("2_cig61")
+icon = ExtResource("1_cig61")
+name = "health"
+type = 0
+rarity = 10
+amount = 20
+metadata/_custom_type_script = "uid://dlcitkg7k2xml"

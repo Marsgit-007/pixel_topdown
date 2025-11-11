@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dhci66ii2tt6p"
+path="res://.godot/imported/By The Roadside 01 - Cars, Trucks, Buses And Motorcycles-3.wav-82b00b0e4e862381b9ed7207d29d7e22.sample"
+
+[deps]
+
+source_file="res://audio/background/By The Roadside 01 - Cars, Trucks, Buses And Motorcycles-3.wav"
+dest_files=["res://.godot/imported/By The Roadside 01 - Cars, Trucks, Buses And Motorcycles-3.wav-82b00b0e4e862381b9ed7207d29d7e22.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

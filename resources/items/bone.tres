@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="ItemInfo" load_steps=3 format=3 uid="uid://gks6hj0lbkq"]
+
+[ext_resource type="Texture2D" uid="uid://bksf7ldcoim2p" path="res://graphics/items/bone.png" id="1_md0aj"]
+[ext_resource type="Script" uid="uid://dlcitkg7k2xml" path="res://scripts/res/item_info.gd" id="2_j1k0w"]
+
+[resource]
+script = ExtResource("2_j1k0w")
+icon = ExtResource("1_md0aj")
+name = "bone"
+type = 2
+rarity = 50
+amount = 1
+metadata/_custom_type_script = "uid://dlcitkg7k2xml"
