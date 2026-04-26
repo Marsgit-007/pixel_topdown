@@ -1,13 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://dklbhr8p1cvgl"]
+[gd_scene format=3 uid="uid://dklbhr8p1cvgl"]
 
 [ext_resource type="Script" uid="uid://yo46g86s6uqf" path="res://scenes/levels/title_screen.gd" id="1_gxyay"]
 [ext_resource type="Texture2D" uid="uid://cjbyfxgn12qni" path="res://graphics/earth.png" id="2_w8mqq"]
 [ext_resource type="AudioStream" uid="uid://d2uqd5vjyupuf" path="res://audio/background/title_screen.wav" id="3_w8mqq"]
 
-[node name="TitleScreen" type="CanvasLayer"]
+[node name="TitleScreen" type="CanvasLayer" unique_id=1036099185]
 script = ExtResource("1_gxyay")
 
-[node name="Control" type="Control" parent="."]
+[node name="Control" type="Control" parent="." unique_id=1004237574]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -15,7 +15,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ColorRect" type="ColorRect" parent="Control"]
+[node name="ColorRect" type="ColorRect" parent="Control" unique_id=1186946887]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -24,7 +24,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.003921569, 0, 0.13725491, 1)
 
-[node name="Button" type="Button" parent="Control"]
+[node name="Button" type="Button" parent="Control" unique_id=803750916]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -39,12 +39,12 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "Start"
 
-[node name="Sprite2D" type="Sprite2D" parent="Control"]
+[node name="Sprite2D" type="Sprite2D" parent="Control" unique_id=1395363555]
 position = Vector2(160, 250)
 scale = Vector2(1.5, 1.5)
 texture = ExtResource("2_w8mqq")
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=948503600]
 stream = ExtResource("3_w8mqq")
 autoplay = true
 
